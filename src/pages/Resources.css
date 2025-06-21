@@ -1,0 +1,129 @@
+.resources-page {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    min-height: 100vh;
+    color: #000;
+}
+
+.resources-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f8f8f8;
+}
+
+.resources-header .menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.resources-header .resources-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.resources-header .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+}
+
+.search-container .search-icon-input {
+    position: absolute;
+    left: 30px;
+    font-size: 18px;
+    color: #888;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.resources-content {
+    padding: 0 15px;
+}
+
+.resources-intro {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.resources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.resource-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.resource-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #a52a2a; /* Brownish red */
+    border-radius: 8px;
+    margin-right: 15px;
+    color: white;
+    font-size: 24px;
+}
+
+.resource-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.resource-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.more-resources-input {
+    display: flex;
+    padding: 15px;
+    margin-top: auto;
+    border-top: 1px solid #ddd;
+}
+
+.more-resources-input input {
+  flex-grow: 1;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  margin-right: 10px;
+}
+
+.more-resources-input .gallery-button, 
+.more-resources-input .attach-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+} 

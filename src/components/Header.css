@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa; /* Or your desired background color */
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+}
+
+.user-info {
+  text-align: center;
+}
+
+.user-info p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.user-info span {
+  font-size: 14px;
+  color: black;
+}
+
+.search-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

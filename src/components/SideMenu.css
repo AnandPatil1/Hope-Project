@@ -1,0 +1,106 @@
+.side-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+}
+
+.side-menu {
+  width: 80%;
+  max-width: 300px;
+  height: 100%;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  animation: slide-in 0.3s forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.side-menu-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0 auto;
+}
+
+.side-menu-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.side-menu-nav a {
+  color: black;
+  text-decoration: none;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.side-menu-nav a:hover {
+  background-color: #f0f0f0;
+}
+
+.nav-icon {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.side-menu-footer {
+    margin-top: auto;
+    padding: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.side-menu-footer:hover {
+    background-color: #f0f0f0;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.user-button-label {
+    font-weight: 500;
+}
+
+/* Clerk's default user button can be a bit tricky to style,
+   this targets the button element inside it to remove default borders/backgrounds */
+.cl-userButton-root .cl-internal-b3fm6y {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+} 

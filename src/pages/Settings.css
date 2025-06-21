@@ -1,0 +1,155 @@
+/* Base container for the entire page */
+.settings-container {
+    min-height: 100vh;
+    background-color: #f7f8fa; /* A softer, modern light grey */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styling */
+.settings-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    flex-shrink: 0;
+}
+
+.settings-header .menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+.settings-header .settings-title {
+    flex-grow: 1;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #111;
+    margin-right: 24px; /* Balance out the menu button */
+}
+
+/* Main content area */
+.settings-content {
+    flex-grow: 1;
+    padding: 20px 15px;
+}
+
+/* Each card for a section (General, Account, etc.) */
+.settings-section-card {
+    background-color: #fff;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.settings-section-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    background-color: #f7f8fa;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+/* List container for items within a card */
+.settings-items-list {
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual setting item row */
+a.settings-item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    gap: 20px; /* Ensures a minimum space between left and right content */
+}
+
+/* Remove border from the last item in a list */
+.settings-item:last-child {
+    border-bottom: none;
+}
+
+.settings-item:hover {
+    background-color: #f9f9f9;
+}
+
+/* New container for icon and label */
+.settings-item-left {
+    display: flex;
+    align-items: center;
+    min-width: 0; /* Prevents overflow bugs with long text */
+}
+
+.settings-item-icon {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.settings-item-label {
+    font-size: 16px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Right-aligned content (value and arrow) */
+.settings-item-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.item-value {
+    font-size: 15px;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px; /* Increased max-width */
+}
+
+.arrow {
+    font-size: 22px;
+    color: #c7c7cc;
+    font-weight: 500;
+}
+
+/* Footer section */
+.settings-footer {
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    color: #999;
+}
+
+.settings-footer a {
+    color: #007aff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.settings-footer a:hover {
+    text-decoration: underline;
+} 

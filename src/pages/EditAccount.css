@@ -1,0 +1,52 @@
+/* Container for the entire account page */
+.account-page-container {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: #f7f8fa;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header section */
+.account-page-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    flex-shrink: 0;
+}
+
+.account-page-header .back-button {
+    background: none;
+    border: none;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    padding-right: 20px;
+}
+
+.account-page-header .account-page-title {
+    flex-grow: 1;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #111;
+    margin-right: 48px; /* Balance out the back button */
+}
+
+/* Main content area where the Clerk component will live */
+.account-page-content {
+    padding: 20px;
+}
+
+/* Overrides to make Clerk's UserProfile component match the theme */
+:root {
+    /* Change the brand color Clerk uses for buttons and highlights */
+    --ck-brand: #000;
+    --ck-brand-text: #fff;
+} 
