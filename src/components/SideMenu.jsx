@@ -4,7 +4,7 @@ import { useClerk } from '@clerk/clerk-react';
 import './SideMenu.css';
 
 const SideMenu = ({ isOpen, closeMenu }) => {
-  const { user } = useClerk();
+  const { user, signOut } = useClerk();
     
   if (!isOpen) {
     return null;
@@ -25,10 +25,15 @@ const SideMenu = ({ isOpen, closeMenu }) => {
           <Link to="/settings" onClick={closeMenu}><span className="nav-icon">⚙️</span> Settings</Link>
           <a href="#" onClick={closeMenu}><span className="nav-icon">❓</span> Help & Feedback</a>
         </nav>
-        <Link to="/account" className="side-menu-footer" onClick={closeMenu}>
-            <img src={user.imageUrl} alt="Your profile image" className="user-avatar" />
-            <span className="user-button-label">Manage Account</span>
-        </Link>
+        <div>
+          <Link to="/account" className="side-menu-footer" onClick={closeMenu}>
+              <img src={user.imageUrl} alt="Your profile image" className="user-avatar" />
+              <span className="user-button-label">Manage Account</span>
+          </Link>
+          <button className="side-menu-footer logout-button" onClick={signOut}>
+              <span className="nav-icon">🚪</span> Logout
+          </button>
+        </div>
       </div>
     </div>
   );
