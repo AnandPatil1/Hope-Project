@@ -1,10 +1,16 @@
 import React, { useContext } from 'react';
 import { MenuContext } from '../App';
 import { Link } from 'react-router-dom';
+import { useClerk } from '@clerk/clerk-react';
 import './Settings.css';
 
 const Settings = () => {
     const { toggleMenu } = useContext(MenuContext);
+    const { signOut } = useClerk();
+
+    const handleSignOut = () => {
+        signOut();
+    };
 
     const sections = {
         'General': [
@@ -14,7 +20,7 @@ const Settings = () => {
         'Account': [
             { label: 'Edit Account', value: 'johndoe@gmail.com' },
             { label: 'Notifications' },
-            { label: 'Sign Out' }
+            { label: 'Sign Out', action: handleSignOut }
         ],
         'Billing Information': [
             { label: 'Payment Methods' },
@@ -40,8 +46,22 @@ const Settings = () => {
                         <div className="settings-items-list">
                             {items.map((item, index) => {
                                 const isLink = item.label === 'Edit Account';
+                                const isSignOut = item.label === 'Sign Out';
                                 const Wrapper = isLink ? Link : 'div';
                                 const props = isLink ? { to: '/account' } : {};
+                                
+                                if (isSignOut) {
+                                    return (
+                                        <div key={item.label} className="settings-item" onClick={item.action}>
+                                            <div className="settings-item-left">
+                                                <span className="settings-item-label">{item.label}</span>
+                                            </div>
+                                            <div className="settings-item-right">
+                                                <span className="arrow">›</span>
+                                            </div>
+                                        </div>
+                                    );
+                                }
 
                                 return (
                                     <Wrapper key={item.label} className="settings-item" {...props}>
