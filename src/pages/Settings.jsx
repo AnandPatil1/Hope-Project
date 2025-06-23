@@ -20,7 +20,7 @@ const Settings = () => {
         'Account': [
             { label: 'Edit Account', value: 'johndoe@gmail.com' },
             { label: 'Notifications' },
-            { label: 'Sign Out' }
+            { label: 'Log Out' }
         ],
         'Billing Information': [
             { label: 'Payment Methods' },
@@ -46,7 +46,7 @@ const Settings = () => {
                         <div className="settings-items-list">
                             {items.map((item, index) => {
                                 const isLink = item.label === 'Edit Account';
-                                const isSignOut = item.label === 'Sign Out';
+                                const isSignOut = item.label === 'Log Out';
                                 const Wrapper = isLink ? Link : 'div';
                                 const props = isLink ? { to: '/account' } : {};
                                 const clickHandler = isSignOut ? handleSignOut : undefined;
