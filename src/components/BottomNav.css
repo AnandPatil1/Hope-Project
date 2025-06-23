@@ -5,23 +5,66 @@
   transform: translateX(-50%);
   width: 100%;
   max-width: 480px;
-  height: 60px;
-  background: white;
-  border-top: 1px solid #ddd;
+  height: 70px;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.bottom-nav .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  min-width: 60px;
+}
+
+.bottom-nav .nav-item:hover {
+  color: #374151;
+  background: #f9fafb;
+}
+
+.bottom-nav .nav-item.active {
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+.bottom-nav .nav-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+.bottom-nav .nav-label {
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Remove old styles */
 .bottom-nav button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+  display: none;
 }
 
 .bottom-nav img {
-  width: 24px;
-  height: 24px;
+  display: none;
+}
+
+/* Hide bottom nav on desktop/tablet screens */
+@media (min-width: 768px) {
+  .bottom-nav {
+    display: none;
+  }
 }
