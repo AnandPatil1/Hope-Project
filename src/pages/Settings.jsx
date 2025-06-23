@@ -1,10 +1,16 @@
 import React, { useContext } from 'react';
 import { MenuContext } from '../App';
 import { Link } from 'react-router-dom';
+import { useClerk } from '@clerk/clerk-react';
 import './Settings.css';
 
 const Settings = () => {
     const { toggleMenu } = useContext(MenuContext);
+    const { signOut } = useClerk();
+
+    const handleSignOut = () => {
+        signOut();
+    };
 
     const sections = {
         'General': [
@@ -40,11 +46,13 @@ const Settings = () => {
                         <div className="settings-items-list">
                             {items.map((item, index) => {
                                 const isLink = item.label === 'Edit Account';
+                                const isSignOut = item.label === 'Sign Out';
                                 const Wrapper = isLink ? Link : 'div';
                                 const props = isLink ? { to: '/account' } : {};
+                                const clickHandler = isSignOut ? handleSignOut : undefined;
 
                                 return (
-                                    <Wrapper key={item.label} className="settings-item" {...props}>
+                                    <Wrapper key={item.label} className="settings-item" {...props} onClick={clickHandler}>
                                         <div className="settings-item-left">
                                             <span className="settings-item-label">{item.label}</span>
                                         </div>

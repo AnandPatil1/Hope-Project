@@ -26,10 +26,10 @@ const SideMenu = ({ isOpen, closeMenu }) => {
           <a href="#" onClick={closeMenu}><span className="nav-icon">❓</span> Help & Feedback</a>
         </nav>
         <div className="side-menu-bottom">
-          <Link to="/account" className="side-menu-footer" onClick={closeMenu}>
-              <img src={user.imageUrl} alt="Your profile image" className="user-avatar" />
-              <span className="user-button-label">Manage Account</span>
-          </Link>
+        <Link to="/account" className="side-menu-footer" onClick={closeMenu}>
+            <img src={user.imageUrl} alt="Your profile image" className="user-avatar" />
+            <span className="user-button-label">Manage Account</span>
+        </Link>
           <button className="side-menu-footer logout-button" onClick={signOut}>
               <span className="nav-icon">🚪</span> Logout
           </button>
