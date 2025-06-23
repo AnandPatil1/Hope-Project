@@ -4,20 +4,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1000;
   display: flex;
 }
 
 .side-menu {
-  width: 80%;
-  max-width: 300px;
+  width: 280px;
   height: 100%;
-  background-color: white;
-  color: black;
+  background: #ffffff;
+  color: #374151;
   display: flex;
   flex-direction: column;
-  animation: slide-in 0.3s forwards;
+  animation: slide-in 0.3s ease-out forwards;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes slide-in {
@@ -32,101 +32,136 @@
 .side-menu-header {
   display: flex;
   align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #eee;
+  justify-content: flex-end;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .close-button {
   background: none;
   border: none;
-  font-size: 24px;
+  color: #6b7280;
   cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.menu-title {
-  font-weight: bold;
-  font-size: 18px;
-  margin: 0 auto;
+.close-button:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.user-profile-section {
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #e5e7eb;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #111827;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #6b7280;
 }
 
 .side-menu-nav {
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 16px 0;
+  flex: 1;
 }
 
-.side-menu-nav a {
-  color: black;
+.nav-item {
+  color: #6b7280;
   text-decoration: none;
-  padding: 15px 0;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
 }
 
-.side-menu-nav a:hover {
-  background-color: #f0f0f0;
+.nav-item:hover {
+  background: #f9fafb;
+  color: #374151;
 }
 
 .nav-icon {
-    margin-right: 15px;
-    font-size: 20px;
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  flex-shrink: 0;
 }
 
-.side-menu-footer {
-    margin-top: auto;
-    padding: 15px;
-    border-top: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-decoration: none;
-    color: inherit;
+.nav-label {
+  font-weight: 500;
+  font-size: 14px;
 }
 
-.side-menu-footer:hover {
-    background-color: #f0f0f0;
-}
-
-.user-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-}
-
-.user-button-label {
-    font-weight: 500;
-}
-
-/* Clerk's default user button can be a bit tricky to style,
-   this targets the button element inside it to remove default borders/backgrounds */
-.cl-userButton-root .cl-internal-b3fm6y {
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-.logout-button {
-    width: 100%;
-    background: none;
-    border: none;
-    color: inherit;
-    font: inherit;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    cursor: pointer;
-    border-top: 1px solid #eee;
-    justify-content: flex-start;
-    transition: background 0.2s;
-}
-
-.logout-button:hover {
-    background-color: #f0f0f0;
+.logout-label {
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .side-menu-bottom {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
+  border-top: 1px solid #e5e7eb;
+  padding: 8px 0;
+}
+
+.account-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logout-button {
+  justify-content: flex-start;
+}
+
+/* Remove old styles that are no longer needed */
+.menu-title {
+  display: none;
+}
+
+.side-menu-footer {
+  display: none;
+}
+
+.user-button-label {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .side-menu {
+    width: 90%;
+    max-width: 320px;
+  }
 } 
