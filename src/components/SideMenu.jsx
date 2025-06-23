@@ -25,7 +25,7 @@ const SideMenu = ({ isOpen, closeMenu }) => {
           <Link to="/settings" onClick={closeMenu}><span className="nav-icon">⚙️</span> Settings</Link>
           <a href="#" onClick={closeMenu}><span className="nav-icon">❓</span> Help & Feedback</a>
         </nav>
-        <div>
+        <div className="side-menu-bottom">
           <Link to="/account" className="side-menu-footer" onClick={closeMenu}>
               <img src={user.imageUrl} alt="Your profile image" className="user-avatar" />
               <span className="user-button-label">Manage Account</span>

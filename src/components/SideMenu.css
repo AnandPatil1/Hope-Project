@@ -123,4 +123,10 @@
 
 .logout-button:hover {
     background-color: #f0f0f0;
+}
+
+.side-menu-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
 } 
