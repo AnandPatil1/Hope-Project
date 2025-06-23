@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Chatbox from "./pages/Chatbox";
 import Resources from "./pages/Resources";
 import Settings from "./pages/Settings";
+import About from "./pages/About";
 import SideMenu from "./components/SideMenu";
 import LandingPage from "./pages/LandingPage";
 import EditAccount from "./pages/EditAccount";
@@ -40,6 +41,7 @@ function App() {
               <Route path="/chat" element={<Chatbox />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/about" element={<About />} />
               <Route path="/account" element={<EditAccount />} />
             </Routes>
           </div>

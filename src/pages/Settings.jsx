@@ -46,9 +46,10 @@ const Settings = () => {
                         <div className="settings-items-list">
                             {items.map((item, index) => {
                                 const isLink = item.label === 'Edit Account';
+                                const isAbout = item.label === 'About';
                                 const isSignOut = item.label === 'Sign Out';
-                                const Wrapper = isLink ? Link : 'div';
-                                const props = isLink ? { to: '/account' } : {};
+                                const Wrapper = (isLink || isAbout) ? Link : 'div';
+                                const props = isLink ? { to: '/account' } : isAbout ? { to: '/about' } : {};
                                 
                                 if (isSignOut) {
                                     return (
