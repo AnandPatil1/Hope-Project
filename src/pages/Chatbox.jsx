@@ -44,6 +44,7 @@ const Chatbox = () => {
             <div className="message received">Hmmm</div>
             <div className="message received">I think I get it</div>
             <div className="message received">I can see here that I can also upload more documents or a picture if that would help me better.</div>
+            <div className="message received">thats pretty cool</div>
         </div>
 
       </div>
