@@ -7,6 +7,8 @@ import Chatbox from "./pages/Chatbox";
 import Resources from "./pages/Resources";
 import Settings from "./pages/Settings";
 import About from "./pages/About";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
 import SideMenu from "./components/SideMenu";
 import LandingPage from "./pages/LandingPage";
 import EditAccount from "./pages/EditAccount";
@@ -42,6 +44,8 @@ function App() {
               <Route path="/resources" element={<Resources />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/about" element={<About />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-use" element={<TermsOfUse />} />
               <Route path="/account" element={<EditAccount />} />
             </Routes>
           </div>

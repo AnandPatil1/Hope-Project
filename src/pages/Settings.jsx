@@ -47,9 +47,14 @@ const Settings = () => {
                             {items.map((item, index) => {
                                 const isLink = item.label === 'Edit Account';
                                 const isAbout = item.label === 'About';
+                                const isPrivacyPolicy = item.label === 'Privacy Policy';
+                                const isTermsOfUse = item.label === 'Terms of Use';
                                 const isSignOut = item.label === 'Sign Out';
-                                const Wrapper = (isLink || isAbout) ? Link : 'div';
-                                const props = isLink ? { to: '/account' } : isAbout ? { to: '/about' } : {};
+                                const Wrapper = (isLink || isAbout || isPrivacyPolicy || isTermsOfUse) ? Link : 'div';
+                                const props = isLink ? { to: '/account' } : 
+                                            isAbout ? { to: '/about' } : 
+                                            isPrivacyPolicy ? { to: '/privacy-policy' } :
+                                            isTermsOfUse ? { to: '/terms-of-use' } : {};
                                 
                                 if (isSignOut) {
                                     return (
