@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { MenuContext } from '../App';
+import { MenuContext, ThemeContext } from '../App';
 import { Link } from 'react-router-dom';
 import { useClerk } from '@clerk/clerk-react';
 import './Settings.css';
 
 const Settings = () => {
     const { toggleMenu } = useContext(MenuContext);
+    const { theme, toggleTheme } = useContext(ThemeContext);
     const { signOut } = useClerk();
 
     const handleSignOut = () => {
@@ -14,7 +15,7 @@ const Settings = () => {
 
     const sections = {
         'General': [
-            { label: 'Theme', value: 'Auto' },
+            { label: 'Theme', value: theme === 'light' ? 'Light' : 'Dark', action: toggleTheme },
             { label: 'About' }
         ],
         'Account': [
@@ -48,16 +49,18 @@ const Settings = () => {
                                 const isLink = item.label === 'Edit Account';
                                 const isAbout = item.label === 'About';
                                 const isSignOut = item.label === 'Sign Out';
+                                const isTheme = item.label === 'Theme';
                                 const Wrapper = (isLink || isAbout) ? Link : 'div';
                                 const props = isLink ? { to: '/account' } : isAbout ? { to: '/about' } : {};
                                 
-                                if (isSignOut) {
+                                if (isSignOut || isTheme) {
                                     return (
                                         <div key={item.label} className="settings-item" onClick={item.action}>
                                             <div className="settings-item-left">
                                                 <span className="settings-item-label">{item.label}</span>
                                             </div>
                                             <div className="settings-item-right">
+                                                {item.value && <span className="item-value">{item.value}</span>}
                                                 <span className="arrow">›</span>
                                             </div>
                                         </div>

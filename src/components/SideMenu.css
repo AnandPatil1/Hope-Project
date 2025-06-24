@@ -12,12 +12,13 @@
 .side-menu {
   width: 280px;
   height: 100%;
-  background: #ffffff;
-  color: #374151;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   animation: slide-in 0.3s ease-out forwards;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 10px var(--shadow-color);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 @keyframes slide-in {
@@ -34,13 +35,14 @@
   align-items: center;
   justify-content: flex-end;
   padding: 16px 20px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
 }
 
 .close-button {
   background: none;
   border: none;
-  color: #6b7280;
+  color: var(--text-secondary);
   cursor: pointer;
   padding: 8px;
   border-radius: 6px;
@@ -51,8 +53,8 @@
 }
 
 .close-button:hover {
-  background: #f3f4f6;
-  color: #374151;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 .user-profile-section {
@@ -60,14 +62,16 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
 }
 
 .user-avatar {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--border-color);
+  transition: border-color 0.3s ease;
 }
 
 .user-info {
@@ -79,12 +83,14 @@
 .user-name {
   font-weight: 600;
   font-size: 16px;
-  color: #111827;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .user-email {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .side-menu-nav {
@@ -95,7 +101,7 @@
 }
 
 .nav-item {
-  color: #6b7280;
+  color: var(--text-secondary);
   text-decoration: none;
   padding: 12px 20px;
   display: flex;
@@ -111,8 +117,8 @@
 }
 
 .nav-item:hover {
-  background: #f9fafb;
-  color: #374151;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 .nav-icon {
@@ -133,12 +139,14 @@
 }
 
 .side-menu-bottom {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border-color);
   padding: 8px 0;
+  transition: border-color 0.3s ease;
 }
 
 .account-item {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
 }
 
 .logout-button {

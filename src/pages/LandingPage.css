@@ -3,32 +3,36 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f7f8fa; /* Match the light theme background */
+    background-color: var(--bg-tertiary);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     text-align: center;
     padding: 20px;
+    transition: background-color 0.3s ease;
 }
 
 .landing-content {
-    background-color: #fff;
+    background-color: var(--bg-secondary);
     padding: 40px 50px;
     border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px var(--shadow-color);
     max-width: 500px;
     width: 100%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .landing-content h1 {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #111;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .landing-content p {
     font-size: 16px;
     margin-bottom: 30px;
-    color: #666;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 .landing-buttons {
@@ -53,19 +57,22 @@
 }
 
 .sign-in {
-    background-color: #e9ecef;
-    color: #343a40;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.2s, color 0.3s ease, border-color 0.3s ease;
 }
 
 .sign-in:hover {
-    background-color: #dee2e6;
+    background-color: var(--border-light);
 }
 
 .sign-up {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--text-primary);
+    color: var(--bg-secondary);
+    transition: background-color 0.2s, color 0.3s ease;
 }
 
 .sign-up:hover {
-    background-color: #333;
+    background-color: var(--text-secondary);
 } 

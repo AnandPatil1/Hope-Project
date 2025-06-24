@@ -1,22 +1,26 @@
 .chart-card {
-  background: white;
+  background: var(--bg-secondary);
   border-radius: 12px;
   margin: 0 16px 16px;
   padding: 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px var(--shadow-light);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .chart-card h3 {
   font-size: 16px;
   margin-bottom: 12px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .chart-placeholder {
   height: 150px;
-  background: #f8f8f8;
+  background: var(--bg-tertiary);
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

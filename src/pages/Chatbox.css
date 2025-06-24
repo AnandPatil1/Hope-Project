@@ -3,8 +3,9 @@ body, html, #root {
   padding: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app {
@@ -12,21 +13,23 @@ body, html, #root {
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .chatbox-header {
   display: flex;
   align-items: center;
   padding: 10px 15px;
-  border-bottom: 1px solid #ddd;
-  background-color: #f8f8f8;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-tertiary);
   flex-shrink: 0;
   position: sticky;
   top: 0;
   z-index: 10;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .back-button {
@@ -35,6 +38,8 @@ body, html, #root {
   font-size: 24px;
   cursor: pointer;
   margin-right: 10px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .avatar {
@@ -52,12 +57,15 @@ body, html, #root {
 .header-name {
   font-weight: bold;
   margin: 0;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .header-course {
   font-size: 12px;
-  color: #666;
+  color: var(--text-secondary);
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 .messages {
@@ -67,6 +75,8 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
 }
 
 /* Centered timestamp divider */
@@ -78,12 +88,13 @@ body, html, #root {
 }
 
 .timestamp-text {
-  background-color: #f0f0f0;
-  color: #666;
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
   font-size: 12px;
   padding: 4px 12px;
   border-radius: 12px;
   font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .message-container {
@@ -134,14 +145,30 @@ body, html, #root {
 }
 
 .message.sent {
-  background-color: #0b93f6;
+  background-color: var(--accent-color);
   color: white;
   align-self: flex-end;
+  margin-left: auto;
+  transition: background-color 0.3s ease;
 }
 
 .message.received {
-  background-color: #e5e5ea;
-  color: black;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  align-self: flex-start;
+  margin-right: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.message-time {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+  align-self: flex-end;
+  transition: color 0.3s ease;
+}
+
+.message.received .message-time {
   align-self: flex-start;
 }
 
@@ -157,8 +184,9 @@ body, html, #root {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #999;
+  background-color: var(--text-tertiary);
   animation: typing 1.4s infinite ease-in-out;
+  transition: background-color 0.3s ease;
 }
 
 .typing-dot:nth-child(1) {
@@ -184,24 +212,27 @@ body, html, #root {
   display: flex;
   align-items: center;
   padding: 10px;
-  border-top: 1px solid #ddd;
-  background-color: #fff;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
   gap: 8px;
   flex-shrink: 0;
   position: sticky;
   bottom: 0;
   z-index: 10;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .chatbox-input input {
   flex-grow: 1;
   border-radius: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   padding: 10px 15px;
   font-size: 14px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
   min-height: 20px;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 /* Responsive input sizing */
@@ -230,12 +261,12 @@ body, html, #root {
 }
 
 .chatbox-input input:focus {
-  border-color: #0b93f6;
+  border-color: var(--accent-color);
 }
 
 .chatbox-input input:disabled {
-  background-color: #f5f5f5;
-  color: #999;
+  background-color: var(--bg-primary);
+  color: var(--text-tertiary);
   cursor: not-allowed;
 }
 
@@ -252,6 +283,8 @@ body, html, #root {
   justify-content: center;
   min-width: 36px;
   min-height: 36px;
+  color: var(--text-primary);
+  transition: background-color 0.2s, color 0.3s ease;
 }
 
 /* Responsive button sizing */
@@ -274,22 +307,22 @@ body, html, #root {
 }
 
 .gallery-button:hover, .attach-button:hover {
-  background-color: #f0f0f0;
+  background-color: var(--bg-primary);
 }
 
 .send-button {
-  background-color: #0b93f6;
+  background-color: var(--accent-color);
   color: white;
   font-size: 16px;
   font-weight: bold;
 }
 
 .send-button:hover:not(:disabled) {
-  background-color: #007acc;
+  background-color: var(--accent-hover);
 }
 
 .send-button:disabled {
-  background-color: #ccc;
+  background-color: var(--text-tertiary);
   cursor: not-allowed;
   opacity: 0.6;
 }

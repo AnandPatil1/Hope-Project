@@ -1,13 +1,15 @@
 .teacher-card {
-  background: white;
+  background: var(--bg-secondary);
   border-radius: 12px;
   margin: 0 16px 80px; /* leave space for navbar */
   padding: 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px var(--shadow-light);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .teacher-card h3 {
-  color: #fff;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .teacher-card ul {
@@ -33,5 +35,6 @@
 .teacher-card p {
   margin: 2px 0 0;
   font-size: 13px;
-  color: black;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
