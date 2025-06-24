@@ -1,10 +1,11 @@
 /* Base container for the entire page */
 .settings-container {
-    min-height: 100vh;
+    height: 100vh;
     background-color: #f7f8fa; /* A softer, modern light grey */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 /* Header styling */
@@ -38,6 +39,31 @@
 .settings-content {
     flex-grow: 1;
     padding: 20px 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 70px); /* Subtract header height */
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f7f8fa;
+}
+
+/* Custom scrollbar styling for webkit browsers */
+.settings-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.settings-content::-webkit-scrollbar-track {
+    background: #f7f8fa;
+    border-radius: 4px;
+}
+
+.settings-content::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.settings-content::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
 }
 
 /* Each card for a section (General, Account, etc.) */
@@ -139,9 +165,12 @@ a.settings-item {
 /* Footer section */
 .settings-footer {
     text-align: center;
-    padding: 25px;
+    padding: 15px 25px;
     font-size: 14px;
     color: #999;
+    flex-shrink: 0;
+    background-color: #f7f8fa;
+    border-top: 1px solid #e8e8e8;
 }
 
 .settings-footer a {
