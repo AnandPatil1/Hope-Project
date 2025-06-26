@@ -5,6 +5,7 @@ import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import Home from "./pages/Home";
 import Chatbox from "./pages/Chatbox";
 import Resources from "./pages/Resources";
+import ResourceDetail from "./pages/ResourceDetail";
 import Settings from "./pages/Settings";
 import About from "./pages/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -42,6 +43,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/chat" element={<Chatbox />} />
               <Route path="/resources" element={<Resources />} />
+              <Route path="/resources/:resourceId" element={<ResourceDetail />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />

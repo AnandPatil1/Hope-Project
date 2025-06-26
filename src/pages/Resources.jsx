@@ -1,27 +1,34 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MenuContext } from '../App';
+import lightbulbIcon from '../assets/light bulb.svg';
 import './Resources.css';
 
 const Resources = () => {
     const { toggleMenu } = useContext(MenuContext);
+    const navigate = useNavigate();
 
     const recommendedResources = [
         {
-            title: 'Effective Exam Preparation',
-            description: 'Strategies for studying and passing your exam on subject X',
-            icon: '💡'
+            id: 1,
+            title: 'How to Study Computer Science',
+            description: 'Essential strategies and techniques for mastering CS concepts and programming'
         },
         {
-            title: 'Effective Exam Preparation',
-            description: 'Strategies for studying and passing your exam on subject Y',
-            icon: '💡'
+            id: 2,
+            title: 'How to Study Mathematics',
+            description: 'Proven methods for understanding mathematical concepts and problem-solving'
         },
         {
-            title: 'Effective Exam Preparation',
-            description: 'Strategies for studying and passing your exam on subject Z',
-            icon: '💡'
+            id: 3,
+            title: 'How to Study Physics',
+            description: 'Effective approaches to learning physics principles and applying formulas'
         }
     ];
+
+    const handleResourceClick = (resourceId) => {
+        navigate(`/resources/${resourceId}`);
+    };
 
     return (
         <div className="resources-page">
@@ -43,9 +50,14 @@ const Resources = () => {
 
                 <div className="resources-list">
                     {recommendedResources.map((resource, index) => (
-                        <div key={index} className="resource-card">
+                        <div 
+                            key={index} 
+                            className="resource-card"
+                            onClick={() => handleResourceClick(resource.id)}
+                            style={{ cursor: 'pointer' }}
+                        >
                             <div className="resource-icon-container">
-                                {resource.icon}
+                                <img src={lightbulbIcon} alt="Lightbulb" className="resource-icon" />
                             </div>
                             <div className="resource-info">
                                 <h3>{resource.title}</h3>
