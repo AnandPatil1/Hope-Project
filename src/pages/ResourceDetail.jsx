@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MenuContext } from '../App';
+import { useClerk } from '@clerk/clerk-react';
 import './ResourceDetail.css';
 
 const ResourceDetail = () => {
     const { toggleMenu } = useContext(MenuContext);
+    const { user } = useClerk();
     const { resourceId } = useParams();
     const navigate = useNavigate();
 
@@ -72,7 +74,13 @@ const ResourceDetail = () => {
             <header className="resource-detail-header">
                 <button onClick={handleBackClick} className="back-button">←</button>
                 <h1 className="resource-detail-title">{content.title}</h1>
-                <img src="/assets/profile.png" alt="Profile" className="profile-pic" />
+                <img 
+                    src={user?.imageUrl || "/assets/profile.png"} 
+                    alt="Profile" 
+                    className="profile-pic" 
+                    onClick={() => navigate('/account')}
+                    style={{ cursor: 'pointer' }}
+                />
             </header>
 
             <div className="resource-detail-content">

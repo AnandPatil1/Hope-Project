@@ -1,11 +1,13 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MenuContext } from '../App';
+import { useClerk } from '@clerk/clerk-react';
 import './Chatbox.css';
 
 const Chatbox = () => {
   const navigate = useNavigate();
   const { toggleMenu } = useContext(MenuContext);
+  const { user } = useClerk();
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -176,11 +178,17 @@ const Chatbox = () => {
     <div className="app">
       <div className="chatbox-header">
         <button className="back-button" onClick={toggleMenu}>☰</button>
-        <img src="/assets/profile.png" alt="avatar" className="avatar" />
         <div className="header-info">
           <p className="header-name">Helena Hills</p>
           <p className="header-course">AP Physics 1: Mechanics</p>
         </div>
+        <img 
+            src={user?.imageUrl || "/assets/profile.png"} 
+            alt="avatar" 
+            className="avatar" 
+            onClick={() => navigate('/account')}
+            style={{ cursor: 'pointer' }}
+        />
       </div>
       
       <div className="messages">

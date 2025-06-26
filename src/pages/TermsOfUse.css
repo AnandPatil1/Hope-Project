@@ -1,16 +1,16 @@
-.terms-of-use-container {
+.terms-container {
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: var(--color-bg);
   padding-bottom: 80px; /* Space for bottom nav on mobile */
 }
 
-.terms-of-use-header {
+.terms-header {
   display: flex;
   align-items: center;
   padding: 16px 20px;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--color-shadow);
 }
 
 .menu-button {
@@ -18,7 +18,7 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #374151;
+  color: var(--color-text);
   padding: 8px;
   border-radius: 6px;
   margin-right: 16px;
@@ -26,33 +26,33 @@
 }
 
 .menu-button:hover {
-  background-color: #f3f4f6;
+  background-color: var(--color-bg-alt);
 }
 
-.terms-of-use-title {
+.terms-title {
   font-size: 20px;
   font-weight: 600;
-  color: #111827;
+  color: var(--color-text);
   margin: 0;
 }
 
-.terms-of-use-content {
+.terms-content {
   padding: 40px 20px;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.terms-of-use-main-title {
+.terms-main-title {
   font-size: 48px;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text);
   margin: 0 0 32px 0;
   text-align: left;
 }
 
-.terms-of-use-description {
+.terms-description {
   font-size: 18px;
-  color: #374151;
+  color: var(--color-text-secondary);
   line-height: 1.6;
   margin: 0;
   font-weight: 400;
@@ -60,16 +60,16 @@
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  .terms-of-use-main-title {
+  .terms-main-title {
     font-size: 36px;
     margin-bottom: 24px;
   }
   
-  .terms-of-use-description {
+  .terms-description {
     font-size: 16px;
   }
   
-  .terms-of-use-content {
+  .terms-content {
     padding: 32px 16px;
   }
 } 

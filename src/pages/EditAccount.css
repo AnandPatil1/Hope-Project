@@ -4,6 +4,8 @@ html, body {
     overflow: hidden !important;
     margin: 0 !important;
     padding: 0 !important;
+    background: var(--color-bg) !important;
+    color: var(--color-text) !important;
 }
 
 /* Container for the entire account page */
@@ -12,7 +14,7 @@ html, body {
     max-width: 1200px;
     margin: 0 auto;
     height: 100vh;
-    background-color: #f7f8fa;
+    background-color: var(--color-bg);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -47,10 +49,10 @@ html, body {
     display: flex;
     align-items: center;
     padding: 12px 20px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e8e8e8;
+    background-color: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
     flex-shrink: 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--color-shadow);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -65,7 +67,7 @@ html, body {
     font-weight: 500;
     cursor: pointer;
     text-decoration: none;
-    color: #374151;
+    color: var(--color-text);
     padding: 8px;
     border-radius: 8px;
     display: flex;
@@ -77,8 +79,8 @@ html, body {
 }
 
 .account-page-header .back-button:hover {
-    background-color: #f3f4f6;
-    color: #111827;
+    background-color: var(--color-bg);
+    color: var(--color-primary);
 }
 
 .account-page-header .account-page-title {
@@ -86,7 +88,7 @@ html, body {
     font-size: 18px;
     font-weight: 600;
     text-align: center;
-    color: #111827;
+    color: var(--color-text);
     margin: 0;
     letter-spacing: -0.025em;
 }
@@ -95,7 +97,7 @@ html, body {
 .account-page-content {
     padding: 8px;
     flex: 1;
-    background-color: #f7f8fa;
+    background-color: var(--color-bg);
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -128,10 +130,10 @@ html, body {
 
 /* Style the main container */
 .account-page-content > div {
-    background: #ffffff !important;
+    background: var(--color-card) !important;
     border-radius: 12px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
-    border: 1px solid #e5e7eb !important;
+    box-shadow: var(--color-shadow) !important;
+    border: 1px solid var(--color-border) !important;
     overflow: auto !important;
     width: 100% !important;
     max-width: 900px !important;
@@ -144,8 +146,8 @@ html, body {
     .account-page-content > div {
         max-width: 100% !important;
         border-radius: 8px !important;
-        border-left: 1px solid #e5e7eb !important;
-        border-right: 1px solid #e5e7eb !important;
+        border-left: 1px solid var(--color-border) !important;
+        border-right: 1px solid var(--color-border) !important;
         height: calc(100vh - 58px) !important;
         max-height: calc(100vh - 58px) !important;
     }
@@ -161,13 +163,13 @@ html, body {
 
 /* Style navigation buttons */
 .account-page-content button[role="tab"] {
-    color: #6b7280 !important;
+    color: var(--color-text-secondary) !important;
     font-weight: 500 !important;
     padding: 12px 20px !important;
     border-radius: 8px !important;
     transition: all 0.2s ease !important;
-    background: #f9fafb !important;
-    border: 1px solid #e5e7eb !important;
+    background: var(--color-bg-alt) !important;
+    border: 1px solid var(--color-border) !important;
     margin: 4px !important;
     min-width: 120px !important;
     font-size: 14px !important;
@@ -183,9 +185,9 @@ html, body {
 }
 
 .account-page-content button[role="tab"][aria-selected="true"] {
-    background: #2563eb !important;
-    color: #ffffff !important;
-    border-color: #2563eb !important;
+    background: var(--color-primary) !important;
+    color: var(--color-card) !important;
+    border-color: var(--color-primary) !important;
 }
 
 /* Style form inputs */
@@ -193,12 +195,13 @@ html, body {
 .account-page-content input[type="email"],
 .account-page-content input[type="password"],
 .account-page-content input[type="tel"] {
-    border: 1px solid #d1d5db !important;
+    border: 1px solid var(--color-border) !important;
     border-radius: 8px !important;
     padding: 14px 18px !important;
     font-size: 16px !important;
     transition: all 0.2s ease !important;
-    background: #ffffff !important;
+    background: var(--color-card) !important;
+    color: var(--color-text) !important;
     width: 100% !important;
     max-width: 400px !important;
 }
@@ -215,15 +218,15 @@ html, body {
 }
 
 .account-page-content input:focus {
-    border-color: #2563eb !important;
+    border-color: var(--color-primary) !important;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
     outline: none !important;
 }
 
 /* Style primary buttons */
 .account-page-content button[data-localization-key]:not([role="tab"]) {
-    background: #2563eb !important;
-    color: #ffffff !important;
+    background: var(--color-primary) !important;
+    color: var(--color-card) !important;
     border: none !important;
     border-radius: 8px !important;
     padding: 14px 28px !important;
@@ -243,15 +246,15 @@ html, body {
 }
 
 .account-page-content button[data-localization-key]:not([role="tab"]):hover {
-    background: #1d4ed8 !important;
+    background: var(--color-primary-hover) !important;
     transform: translateY(-1px) !important;
 }
 
 /* Style secondary buttons */
 .account-page-content button[type="button"]:not([role="tab"]):not([data-localization-key]) {
-    border: 1px solid #d1d5db !important;
-    background: #ffffff !important;
-    color: #374151 !important;
+    border: 1px solid var(--color-border) !important;
+    background: var(--color-card) !important;
+    color: var(--color-text) !important;
     border-radius: 8px !important;
     padding: 12px 24px !important;
     font-weight: 500 !important;
@@ -259,13 +262,13 @@ html, body {
 }
 
 .account-page-content button[type="button"]:not([role="tab"]):not([data-localization-key]):hover {
-    background: #f9fafb !important;
-    border-color: #9ca3af !important;
+    background: var(--color-bg-alt) !important;
+    border-color: var(--color-text-secondary) !important;
 }
 
 /* Style form labels */
 .account-page-content label {
-    color: #374151 !important;
+    color: var(--color-text) !important;
     font-weight: 500 !important;
     font-size: 14px !important;
     margin-bottom: 6px !important;
@@ -276,7 +279,7 @@ html, body {
 .account-page-content h1,
 .account-page-content h2,
 .account-page-content h3 {
-    color: #111827 !important;
+    color: var(--color-text) !important;
     font-weight: 600 !important;
     margin-bottom: 16px !important;
 }
@@ -284,39 +287,39 @@ html, body {
 /* Style the profile image area */
 .account-page-content img[alt*="avatar"] {
     border-radius: 12px !important;
-    border: 3px solid #e5e7eb !important;
+    border: 3px solid var(--color-border) !important;
     transition: all 0.2s ease !important;
 }
 
 .account-page-content img[alt*="avatar"]:hover {
-    border-color: #2563eb !important;
+    border-color: var(--color-primary) !important;
 }
 
 /* Style error messages */
 .account-page-content [role="alert"] {
-    color: #dc2626 !important;
+    color: var(--color-danger) !important;
     font-size: 14px !important;
     margin-top: 4px !important;
 }
 
 /* Style success messages */
 .account-page-content [data-type="success"] {
-    color: #059669 !important;
+    color: var(--color-success) !important;
     font-size: 14px !important;
     margin-top: 4px !important;
 }
 
 /* Override Clerk's default appearance using CSS variables */
 .account-page-content {
-    --cl-brand-color: #2563eb;
-    --cl-brand-color-hover: #1d4ed8;
-    --cl-text-color: #111827;
-    --cl-text-color-secondary: #6b7280;
-    --cl-background-color: #ffffff;
-    --cl-border-color: #d1d5db;
+    --cl-brand-color: var(--color-primary);
+    --cl-brand-color-hover: var(--color-primary-hover);
+    --cl-text-color: var(--color-text);
+    --cl-text-color-secondary: var(--color-text-secondary);
+    --cl-background-color: var(--color-card);
+    --cl-border-color: var(--color-border);
     --cl-border-radius: 8px;
     --cl-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    --cl-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --cl-shadow: var(--color-shadow);
 }
 
 /* Comprehensive responsive design */
@@ -384,7 +387,7 @@ html, body {
     .account-page-content > div {
         margin: 0 auto !important;
         border-radius: 8px !important;
-        border: 1px solid #e5e7eb !important;
+        border: 1px solid var(--color-border) !important;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05) !important;
         height: calc(100vh - 58px) !important;
         max-height: calc(100vh - 58px) !important;

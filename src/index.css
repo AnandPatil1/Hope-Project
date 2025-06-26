@@ -15,3 +15,43 @@ button {
   font-family: inherit;
 }
 
+/* Theme variables */
+:root {
+  --color-bg: #f7f8fa;
+  --color-bg-alt: #fff;
+  --color-text: #111827;
+  --color-text-secondary: #6b7280;
+  --color-primary: #8b0000;
+  --color-primary-hover: #660000;
+  --color-border: #e5e7eb;
+  --color-card: #fff;
+  --color-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --color-link: #8b0000;
+  --color-link-hover: #660000;
+  --color-danger: #dc2626;
+  --color-success: #059669;
+  --color-message-received: #E5E5EA;
+}
+
+body.dark {
+  --color-bg: #18181b;
+  --color-bg-alt: #23232a;
+  --color-text: #f3f4f6;
+  --color-text-secondary: #a1a1aa;
+  --color-primary: #ff6b6b;
+  --color-primary-hover: #ff5252;
+  --color-border: #27272a;
+  --color-card: #23232a;
+  --color-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --color-link: #ff6b6b;
+  --color-link-hover: #ff5252;
+  --color-danger: #f87171;
+  --color-success: #34d399;
+  --color-message-received: #23232a;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+

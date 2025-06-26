@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { MenuContext } from '../App';
 import { Link } from 'react-router-dom';
 import { useClerk } from '@clerk/clerk-react';
@@ -8,13 +8,30 @@ const Settings = () => {
     const { toggleMenu } = useContext(MenuContext);
     const { signOut } = useClerk();
 
+    // Theme state
+    const [theme, setTheme] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('theme') || 'light';
+        }
+        return 'light';
+    });
+
+    useEffect(() => {
+        document.body.classList.toggle('dark', theme === 'dark');
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const handleThemeToggle = () => {
+        setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    };
+
     const handleSignOut = () => {
         signOut();
     };
 
     const sections = {
         'General': [
-            { label: 'Theme', value: 'Auto' },
+            { label: 'Theme', value: theme === 'dark' ? 'Dark' : 'Light', action: handleThemeToggle },
             { label: 'About' }
         ],
         'Account': [
@@ -50,12 +67,12 @@ const Settings = () => {
                                 const isPrivacyPolicy = item.label === 'Privacy Policy';
                                 const isTermsOfUse = item.label === 'Terms of Use';
                                 const isSignOut = item.label === 'Sign Out';
+                                const isTheme = item.label === 'Theme';
                                 const Wrapper = (isLink || isAbout || isPrivacyPolicy || isTermsOfUse) ? Link : 'div';
                                 const props = isLink ? { to: '/account' } : 
                                             isAbout ? { to: '/about' } : 
                                             isPrivacyPolicy ? { to: '/privacy-policy' } :
                                             isTermsOfUse ? { to: '/terms-of-use' } : {};
-                                
                                 if (isSignOut) {
                                     return (
                                         <div key={item.label} className="settings-item" onClick={item.action}>
@@ -68,7 +85,19 @@ const Settings = () => {
                                         </div>
                                     );
                                 }
-
+                                if (isTheme) {
+                                    return (
+                                        <div key={item.label} className="settings-item" onClick={item.action} style={{ cursor: 'pointer' }}>
+                                            <div className="settings-item-left">
+                                                <span className="settings-item-label">{item.label}</span>
+                                            </div>
+                                            <div className="settings-item-right">
+                                                <span className="item-value">{item.value}</span>
+                                                <span className="arrow">›</span>
+                                            </div>
+                                        </div>
+                                    );
+                                }
                                 return (
                                     <Wrapper key={item.label} className="settings-item" {...props}>
                                         <div className="settings-item-left">

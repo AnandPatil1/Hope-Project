@@ -3,8 +3,8 @@ body, html, #root {
   padding: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .app {
@@ -12,21 +12,22 @@ body, html, #root {
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   position: relative;
 }
 
 .chatbox-header {
   display: flex;
   align-items: center;
-  padding: 10px 15px;
-  border-bottom: 1px solid #ddd;
-  background-color: #f8f8f8;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg-alt);
   flex-shrink: 0;
   position: sticky;
   top: 0;
   z-index: 10;
+  min-height: 60px;
 }
 
 .back-button {
@@ -34,29 +35,49 @@ body, html, #root {
   border: none;
   font-size: 24px;
   cursor: pointer;
-  margin-right: 10px;
+  margin-right: 12px;
+  color: var(--color-text);
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: var(--color-bg);
 }
 
 .avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-left: auto;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
 }
 
 .header-info {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  margin-right: 12px;
+  align-items: center;
+  text-align: center;
 }
 
 .header-name {
   font-weight: bold;
   margin: 0;
+  color: var(--color-text);
+  font-size: 16px;
 }
 
 .header-course {
   font-size: 12px;
-  color: #666;
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
@@ -67,6 +88,7 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  background-color: var(--color-bg);
 }
 
 /* Centered timestamp divider */
@@ -78,8 +100,8 @@ body, html, #root {
 }
 
 .timestamp-text {
-  background-color: #f0f0f0;
-  color: #666;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text-secondary);
   font-size: 12px;
   padding: 4px 12px;
   border-radius: 12px;
@@ -134,14 +156,14 @@ body, html, #root {
 }
 
 .message.sent {
-  background-color: #0b93f6;
+  background-color: var(--color-primary);
   color: white;
   align-self: flex-end;
 }
 
 .message.received {
-  background-color: #e5e5ea;
-  color: black;
+  background-color: var(--color-message-received);
+  color: var(--color-text);
   align-self: flex-start;
 }
 
@@ -157,7 +179,7 @@ body, html, #root {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #999;
+  background-color: var(--color-text-secondary);
   animation: typing 1.4s infinite ease-in-out;
 }
 
@@ -184,8 +206,8 @@ body, html, #root {
   display: flex;
   align-items: center;
   padding: 10px;
-  border-top: 1px solid #ddd;
-  background-color: #fff;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg-alt);
   gap: 8px;
   flex-shrink: 0;
   position: sticky;
@@ -196,12 +218,14 @@ body, html, #root {
 .chatbox-input input {
   flex-grow: 1;
   border-radius: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   padding: 10px 15px;
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s;
   min-height: 20px;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 /* Responsive input sizing */
@@ -230,12 +254,12 @@ body, html, #root {
 }
 
 .chatbox-input input:focus {
-  border-color: #0b93f6;
+  border-color: var(--color-primary);
 }
 
 .chatbox-input input:disabled {
-  background-color: #f5f5f5;
-  color: #999;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text-secondary);
   cursor: not-allowed;
 }
 
@@ -251,7 +275,7 @@ body, html, #root {
   justify-content: center;
   min-width: 36px;
   min-height: 36px;
-  color: #666;
+  color: var(--color-text-secondary);
 }
 
 /* Responsive button sizing */
@@ -272,8 +296,8 @@ body, html, #root {
 }
 
 .gallery-button:hover, .attach-button:hover {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 /* Remove gap between attachment buttons */
@@ -282,17 +306,17 @@ body, html, #root {
 }
 
 .send-button {
-  background-color: #0b93f6;
+  background-color: var(--color-primary);
   color: white;
 }
 
 .send-button:hover:not(:disabled) {
-  background-color: #007acc;
+  background-color: var(--color-primary-hover);
   transform: scale(1.05);
 }
 
 .send-button:disabled {
-  background-color: #ccc;
+  background-color: var(--color-border);
   cursor: not-allowed;
   opacity: 0.6;
   transform: none;
@@ -301,5 +325,5 @@ body, html, #root {
 .gallery-button:disabled, .attach-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  color: #ccc;
+  color: var(--color-border);
 } 

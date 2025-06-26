@@ -2,8 +2,8 @@ body, html, #root {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #fff; /* Set a consistent white background */
-  color: black;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 .app {
@@ -11,6 +11,6 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: #fff; /* Ensure all pages have a white background */
+  background-color: var(--color-bg);
 }
 
