@@ -1,35 +1,35 @@
 # HOPE - AI-Powered Educational Platform
 
-## 📚 About
+## About
 
 **HOPE** (Helping Others Progress in Education) is an innovative AI-powered educational platform designed to revolutionize the learning experience by connecting students with AI teachers. The platform provides personalized learning assistance, interactive chat functionality, and comprehensive educational resources across various subjects.
 
-## ✨ Features
+## Features
 
-### 🤖 AI Teacher Chat
+### AI Teacher Chat
 - Interactive chatbot interface for real-time communication with AI teachers
 - Subject-specific assistance (Physics, Mathematics, Computer Science, and more)
 - File and image upload support for homework help
 - Contextual responses based on course materials and uploaded documents
 
-### 📖 Smart Resources
+### Smart Resources
 - Curated educational resources based on individual learning needs
 - Dynamic resource generation based on specific topics
 - Search functionality for finding relevant study materials
 - Personalized recommendations for areas of improvement
 
-### 👤 User Management
+### User Management
 - Secure authentication powered by Clerk
 - User profile management and account settings
 - Personalized learning dashboard
 
-### 📱 Modern Interface
+### Modern Interface
 - Responsive design for desktop and mobile devices
 - Intuitive navigation with side menu and bottom navigation
 - Dark/light theme support
 - Subject filtering and progress tracking
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Frontend Framework**: React 19.1.0
 - **Build Tool**: Vite 6.3.5
@@ -38,7 +38,7 @@
 - **Styling**: CSS3 with Tailwind CSS 4.1.10
 - **Development**: ESLint for code quality
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -80,7 +80,7 @@
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint for code quality check
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Hope-Project-main/
@@ -115,7 +115,7 @@ Hope-Project-main/
 └── vite.config.js        # Vite configuration
 ```
 
-## 🎯 Usage
+## Usage
 
 ### For Students
 
@@ -129,7 +129,7 @@ Hope-Project-main/
 
 The platform provides insights into student progress and areas where additional support may be needed through the analytics dashboard.
 
-## 🔧 Configuration
+## Configuration
 
 ### Clerk Authentication Setup
 
@@ -144,16 +144,6 @@ The platform provides insights into student progress and areas where additional 
 - **Subjects**: Add new subjects in the SubjectFilter component
 - **AI Responses**: Customize AI response logic in `src/pages/Chatbox.jsx`
 
-## 🤝 Contributing
-
-We welcome contributions to the HOPE project! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ### Code Style
 
 - Follow ESLint configuration
@@ -161,11 +151,11 @@ We welcome contributions to the HOPE project! Please follow these steps:
 - Add comments for complex logic
 - Ensure responsive design principles
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🌟 Roadmap
+## Roadmap
 
 - [ ] Integration with external AI APIs (OpenAI, Anthropic)
 - [ ] Advanced file upload and document processing
@@ -175,7 +165,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Advanced analytics and progress tracking
 - [ ] Collaborative learning features
 
-## 📞 Support
+## Support
 
 For support, questions, or suggestions:
 
@@ -183,7 +173,7 @@ For support, questions, or suggestions:
 - Contact the development team
 - Check out our documentation wiki
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built with React and Vite for optimal performance
 - Authentication powered by Clerk
