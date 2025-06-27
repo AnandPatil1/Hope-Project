@@ -14,7 +14,7 @@ const TermsOfUse = () => {
 
             <main className="terms-of-use-content">
                 <h1 className="terms-of-use-main-title">Terms of Use</h1>
-                <p className="terms-of-use-description">This is terms of use!</p>
+                <p className="terms-of-use-description">This is terms of use! yay</p>
             </main>
         </div>
     );
