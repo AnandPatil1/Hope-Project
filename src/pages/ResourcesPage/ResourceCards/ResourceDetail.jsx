@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MenuContext } from '../App';
+import { MenuContext } from '../../../App';
 import { useClerk } from '@clerk/clerk-react';
 import './ResourceDetail.css';
 

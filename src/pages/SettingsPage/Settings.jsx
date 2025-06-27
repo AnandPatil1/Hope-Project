@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { MenuContext } from '../App';
+import { MenuContext } from '../../App';
 import { Link } from 'react-router-dom';
 import { useClerk } from '@clerk/clerk-react';
 import './Settings.css';

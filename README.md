@@ -85,34 +85,75 @@
 ```
 Hope-Project-main/
 ├── src/
-│   ├── components/           # Reusable UI components
-│   │   ├── BottomNav.jsx    # Bottom navigation bar
-│   │   ├── Header.jsx       # Page header component
-│   │   ├── SideMenu.jsx     # Sidebar navigation
-│   │   ├── ChartCard.jsx    # Progress visualization
-│   │   ├── SubjectFilter.jsx # Subject selection filter
-│   │   └── TeacherList.jsx  # Teacher directory
-│   ├── pages/               # Main application pages
-│   │   ├── Home.jsx         # Dashboard homepage
-│   │   ├── Chatbox.jsx      # AI chat interface
-│   │   ├── Resources.jsx    # Learning resources
-│   │   ├── ResourceDetail.jsx # Detailed resource view
-│   │   ├── Settings.jsx     # User preferences
-│   │   ├── LandingPage.jsx  # Authentication landing
-│   │   ├── EditAccount.jsx  # Profile management
-│   │   ├── About.jsx        # About page
-│   │   ├── PrivacyPolicy.jsx # Privacy policy
-│   │   └── TermsOfUse.jsx   # Terms of service
-│   ├── assets/              # Static assets
-│   │   ├── chatbot.png      # UI icons and images
+│   ├── components/                   # Reusable UI components
+│   │   └── Navigation/               # Navigation components
+│   │       ├── Header/               # Page header component
+│   │       │   ├── Header.jsx
+│   │       │   └── Header.css
+│   │       ├── BottomNav/            # Bottom navigation bar
+│   │       │   ├── BottomNav.jsx
+│   │       │   └── BottomNav.css
+│   │       └── SideMenu/             # Sidebar navigation
+│   │           ├── SideMenu.jsx
+│   │           └── SideMenu.css
+│   ├── pages/                        # Main application pages
+│   │   ├── HomePage/                 # Home page
+│   │   │   ├── Home.jsx              # Dashboard homepage
+│   │   │   └── UI/                   # Home page specific components
+│   │   │       ├── DashboardChart/   # Progress visualization
+│   │   │       │   ├── ChartCard.jsx
+│   │   │       │   └── ChartCard.css
+│   │   │       ├── SubjectFilter/    # Subject selection filter
+│   │   │       │   ├── SubjectFilter.jsx
+│   │   │       │   └── SubjectFilter.css
+│   │   │       └── TeacherList/      # Teacher directory
+│   │   │           ├── TeacherList.jsx
+│   │   │           └── TeacherList.css
+│   │   ├── LandingPage/          # Authentication landing
+│   │   │   ├── LandingPage.jsx
+│   │   │   └── LandingPage.css
+│   │   ├── ChatBotPage/              # AI chat functionality
+│   │   │   ├── Chatbox.jsx           # AI chat interface
+│   │   │   └── Chatbox.css
+│   │   ├── ResourcesPage/            # Learning resources
+│   │   │   ├── Resources.jsx         # Main resources page
+│   │   │   ├── Resources.css
+│   │   │   └── ResourceCards/        # Resource detail components
+│   │   │       ├── ResourceDetail.jsx
+│   │   │       └── ResourceDetail.css
+│   │   └── SettingsPage/             # User settings and account management
+│   │       ├── Settings.jsx          # Main settings page
+│   │       ├── Settings.css
+│   │       ├── EditAccount/          # Profile management
+│   │       │   ├── EditAccount.jsx
+│   │       │   └── EditAccount.css
+│   │       │── About/                # About page
+│   │       │   ├── About.jsx
+│   │       │   └── About.css
+│   │       ├── PrivacyPolicy/        # Privacy policy
+│   │       │   ├── PrivacyPolicy.jsx
+│   │       │   └── PrivacyPolicy.css
+│   │       └── Terms of Use/         # Terms of service
+│   │           ├── TermsOfUse.jsx
+│   │           └── TermsOfUse.css
+│   ├── assets/                       # Static assets
+│   │   ├── chatbot.png               # UI icons and images
 │   │   ├── home.png
 │   │   ├── light bulb.svg
-│   │   └── ...
-│   ├── App.jsx              # Main application component
-│   └── main.jsx            # Application entry point
-├── public/                 # Public assets
-├── package.json           # Project dependencies
-└── vite.config.js        # Vite configuration
+│   │   ├── profile.png
+│   │   ├── resources.png
+│   │   ├── search.png
+│   │   └── subscription.png
+│   ├── App.jsx                       # Main application component
+│   ├── App.css                       # App component styles
+│   ├── main.jsx                      # Application entry point
+│   └── index.css                     # Global styles
+├── public/                           # Public assets
+├── package.json                      # Project dependencies
+├── package-lock.json                 # Dependency lock file
+├── vite.config.js                    # Vite configuration
+├── eslint.config.js                  # ESLint configuration
+└── index.html                        # HTML entry point
 ```
 
 ## Usage
@@ -138,12 +179,6 @@ The platform provides insights into student progress and areas where additional 
 3. Copy your publishable key to the environment variables
 4. Configure sign-in/sign-up options in your Clerk dashboard
 
-### Customization
-
-- **Themes**: Modify CSS variables in `src/index.css` for custom theming
-- **Subjects**: Add new subjects in the SubjectFilter component
-- **AI Responses**: Customize AI response logic in `src/pages/Chatbox.jsx`
-
 ### Code Style
 
 - Follow ESLint configuration
@@ -151,19 +186,11 @@ The platform provides insights into student progress and areas where additional 
 - Add comments for complex logic
 - Ensure responsive design principles
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Roadmap
 
 - [ ] Integration with external AI APIs (OpenAI, Anthropic)
 - [ ] Advanced file upload and document processing
-- [ ] Video conferencing capabilities
-- [ ] Mobile application development
-- [ ] Multi-language support
-- [ ] Advanced analytics and progress tracking
-- [ ] Collaborative learning features
+- [ ] Advanced progress tracking
 
 ## Support
 
@@ -181,5 +208,3 @@ For support, questions, or suggestions:
 - Icons and assets from various open-source collections
 
 ---
-
-**Hope Project** - Empowering education through AI-powered learning assistance.

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MenuContext } from '../App';
+import { MenuContext } from '../../App';
 import { useClerk } from '@clerk/clerk-react';
 import './Chatbox.css';
 

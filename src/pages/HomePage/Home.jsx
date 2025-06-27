@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import SubjectFilter from "../components/SubjectFilter";
-import ChartCard from "../components/ChartCard";
-import TeacherList from "../components/TeacherList";
-import BottomNav from "../components/BottomNav";
+import Header from "../../components/Navigation/Header/Header";
+import SubjectFilter from "./UI/SubjectFilter/SubjectFilter";
+import ChartCard from "./UI/DashboardChart/ChartCard";
+import TeacherList from "./UI/TeacherList/TeacherList";
+import BottomNav from "../../components/Navigation/BottomNav/BottomNav";
 
 const Home = () => {
   const [selectedSubject, setSelectedSubject] = useState("Physics");
