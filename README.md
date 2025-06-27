@@ -2,7 +2,7 @@
 
 ## About
 
-**HOPE** (Helping Others Progress in Education) is an innovative AI-powered educational platform designed to revolutionize the learning experience by connecting students with AI teachers. The platform provides personalized learning assistance, interactive chat functionality, and comprehensive educational resources across various subjects.
+**HOPE** is an innovative AI-powered educational platform designed to revolutionize the learning experience by connecting students with AI teachers. The platform provides personalized learning assistance, interactive chat functionality, and comprehensive educational resources across various subjects.
 
 ## Features
 
