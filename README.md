@@ -15,19 +15,7 @@
 ### Smart Resources
 - Curated educational resources based on individual learning needs
 - Dynamic resource generation based on specific topics
-- Search functionality for finding relevant study materials
-- Personalized recommendations for areas of improvement
-
-### User Management
-- Secure authentication powered by Clerk
-- User profile management and account settings
 - Personalized learning dashboard
-
-### Modern Interface
-- Responsive design for desktop and mobile devices
-- Intuitive navigation with side menu and bottom navigation
-- Dark/light theme support
-- Subject filtering and progress tracking
 
 ## Technology Stack
 
@@ -179,26 +167,31 @@ The platform provides insights into student progress and areas where additional 
 3. Copy your publishable key to the environment variables
 4. Configure sign-in/sign-up options in your Clerk dashboard
 
-### Code Style
+## The AI System
 
-- Follow ESLint configuration
-- Use meaningful component and variable names
-- Add comments for complex logic
-- Ensure responsive design principles
+### Data the AI will be trained on
 
-## Roadmap
+#### 1. **Teacher Data**
+- **Individual Teaching Styles**: Personalized AI models trained on specific teacher methodologies, communication patterns, and instructional approaches
+- **Lesson Plans and Materials**: Curated teaching resources, lesson structures, and educational content based on individual educators
+- **Teaching Preferences**: Subject-specific teaching methods, difficulty progression patterns, and assessment strategies
+- **Adaptive Teaching Methods**: Dynamic adjustment of teaching style based on student learning patterns and comprehension levels
 
-- [ ] Integration with external AI APIs (OpenAI, Anthropic)
-- [ ] Advanced file upload and document processing
-- [ ] Advanced progress tracking
+#### 2. **Educational Content Database**
+- **Subject-specific materials**: Textbooks, lecture notes, practice problems
+- **Learning resources**: Study guides, video transcripts, problems and exercises
+- **Assessment data**: Quizzes, tests, and homework solutions
+- **Curriculum standards**: National and international educational frameworks
 
-## Support
+#### 3. **Student Interaction Data**
+- **Chat history**: The Q&A sessions between students and AI
+- **Learning patterns**: Time spent on topics, difficulty levels, success rates
+- **Feedback loops**: Student ratings, corrections, and improvement suggestions
+- **Progress tracking**: Performance metrics across different subjects
 
-For support, questions, or suggestions:
+### AI Model
 
-- Create an issue in this repository
-- Contact the development team
-- Check out our documentation wiki
+**GPT-4 or Claude 3**
 
 ## Acknowledgments
 
