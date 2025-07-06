@@ -1,28 +1,17 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { MenuContext } from '../../App';
 import { Link } from 'react-router-dom';
 import { useClerk } from '@clerk/clerk-react';
+import BottomNav from '../../components/Navigation/BottomNav/BottomNav';
+import '../../styles/shared.css';
 import './Settings.css';
 
 const Settings = () => {
-    const { toggleMenu } = useContext(MenuContext);
+    const { toggleMenu, theme, setTheme } = useContext(MenuContext);
     const { signOut } = useClerk();
 
-    // Theme state
-    const [theme, setTheme] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return localStorage.getItem('theme') || 'light';
-        }
-        return 'light';
-    });
-
-    useEffect(() => {
-        document.body.classList.toggle('dark', theme === 'dark');
-        localStorage.setItem('theme', theme);
-    }, [theme]);
-
     const handleThemeToggle = () => {
-        setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+        setTheme(theme === 'light' ? 'dark' : 'light');
     };
 
     const handleSignOut = () => {
@@ -50,44 +39,30 @@ const Settings = () => {
     };
 
     return (
-        <div className="settings-container">
-            <header className="settings-header">
+        <div className="page-container settings-container">
+            <header className="page-header settings-header">
                 <button onClick={toggleMenu} className="menu-button">☰</button>
-                <h1 className="settings-title">Settings</h1>
+                <h1 className="page-title settings-title">Settings</h1>
             </header>
 
-            <main className="settings-content">
-                {Object.entries(sections).map(([title, items]) => (
-                    <section key={title} className="settings-section-card">
-                        <h2 className="settings-section-title">{title}</h2>
-                        <div className="settings-items-list">
-                            {items.map((item, index) => {
-                                const isLink = item.label === 'Edit Account';
-                                const isAbout = item.label === 'About';
-                                const isPrivacyPolicy = item.label === 'Privacy Policy';
-                                const isTermsOfUse = item.label === 'Terms of Use';
-                                const isSignOut = item.label === 'Sign Out';
-                                const isTheme = item.label === 'Theme';
-                                const Wrapper = (isLink || isAbout || isPrivacyPolicy || isTermsOfUse) ? Link : 'div';
-                                const props = isLink ? { to: '/account' } : 
-                                            isAbout ? { to: '/about' } : 
-                                            isPrivacyPolicy ? { to: '/privacy-policy' } :
-                                            isTermsOfUse ? { to: '/terms-of-use' } : {};
-                                if (isSignOut) {
-                                    return (
-                                        <div key={item.label} className="settings-item" onClick={item.action}>
+            <div className="page-content settings-content">
+                {Object.entries(sections).map(([sectionName, items]) => (
+                    <div key={sectionName} className="settings-section-card">
+                        <div className="settings-section-title">{sectionName}</div>
+                        <ul className="settings-items-list">
+                            {items.map((item, index) => (
+                                <li key={index}>
+                                    {item.label === 'About' ? (
+                                        <Link to="/about" className="settings-item">
                                             <div className="settings-item-left">
                                                 <span className="settings-item-label">{item.label}</span>
                                             </div>
                                             <div className="settings-item-right">
                                                 <span className="arrow">›</span>
                                             </div>
-                                        </div>
-                                    );
-                                }
-                                if (isTheme) {
-                                    return (
-                                        <div key={item.label} className="settings-item" onClick={item.action} style={{ cursor: 'pointer' }}>
+                                        </Link>
+                                    ) : item.label === 'Edit Account' ? (
+                                        <Link to="/account" className="settings-item">
                                             <div className="settings-item-left">
                                                 <span className="settings-item-label">{item.label}</span>
                                             </div>
@@ -95,29 +70,46 @@ const Settings = () => {
                                                 <span className="item-value">{item.value}</span>
                                                 <span className="arrow">›</span>
                                             </div>
-                                        </div>
-                                    );
-                                }
-                                return (
-                                    <Wrapper key={item.label} className="settings-item" {...props}>
-                                        <div className="settings-item-left">
-                                            <span className="settings-item-label">{item.label}</span>
-                                        </div>
-                                        <div className="settings-item-right">
-                                            {item.value && <span className="item-value">{item.value}</span>}
-                                            <span className="arrow">›</span>
-                                        </div>
-                                    </Wrapper>
-                                );
-                            })}
-                        </div>
-                    </section>
+                                        </Link>
+                                    ) : item.label === 'Privacy Policy' ? (
+                                        <Link to="/privacy-policy" className="settings-item">
+                                            <div className="settings-item-left">
+                                                <span className="settings-item-label">{item.label}</span>
+                                            </div>
+                                            <div className="settings-item-right">
+                                                <span className="arrow">›</span>
+                                            </div>
+                                        </Link>
+                                    ) : item.label === 'Terms of Use' ? (
+                                        <Link to="/terms-of-use" className="settings-item">
+                                            <div className="settings-item-left">
+                                                <span className="settings-item-label">{item.label}</span>
+                                            </div>
+                                            <div className="settings-item-right">
+                                                <span className="arrow">›</span>
+                                            </div>
+                                        </Link>
+                                    ) : (
+                                        <button 
+                                            className="settings-item" 
+                                            onClick={item.action}
+                                        >
+                                            <div className="settings-item-left">
+                                                <span className="settings-item-label">{item.label}</span>
+                                            </div>
+                                            <div className="settings-item-right">
+                                                {item.value && <span className="item-value">{item.value}</span>}
+                                                <span className="arrow">›</span>
+                                            </div>
+                                        </button>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 ))}
-            </main>
-
-            <footer className="settings-footer">
-                Need Help? <a href="#">Contact Us</a>
-            </footer>
+            </div>
+            <BottomNav />
         </div>
     );
 };

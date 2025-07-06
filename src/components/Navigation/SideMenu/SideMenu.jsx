@@ -1,14 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useClerk } from '@clerk/clerk-react';
+import { ChatContext } from '../../../App';
 import './SideMenu.css';
 
 const SideMenu = ({ isOpen, closeMenu }) => {
   const { user, signOut } = useClerk();
+  const { currentTeacher, openGeneralChat } = useContext(ChatContext);
+  const navigate = useNavigate();
     
   if (!isOpen) {
     return null;
   }
+
+  const handleChatClick = () => {
+    // If there's a current teacher, keep that chat open
+    // If no current teacher, open general chat
+    if (!currentTeacher) {
+      openGeneralChat();
+    }
+    navigate('/chat');
+    closeMenu();
+  };
 
   return (
     <div className="side-menu-overlay" onClick={closeMenu}>
@@ -32,12 +45,14 @@ const SideMenu = ({ isOpen, closeMenu }) => {
             <span className="nav-label">Home</span>
           </Link>
           
-          <Link to="/chat" onClick={closeMenu} className="nav-item">
+          <button onClick={handleChatClick} className="nav-item chat-nav-item">
             <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <span className="nav-label">Chat Bot</span>
-          </Link>
+            <span className="nav-label">
+              Chat Bot
+            </span>
+          </button>
           
           <Link to="/resources" onClick={closeMenu} className="nav-item">
             <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

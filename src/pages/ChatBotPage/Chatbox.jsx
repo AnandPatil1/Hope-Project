@@ -1,79 +1,29 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MenuContext } from '../../App';
+import { MenuContext, ChatContext } from '../../App';
 import { useClerk } from '@clerk/clerk-react';
 import './Chatbox.css';
 
 const Chatbox = () => {
   const navigate = useNavigate();
   const { toggleMenu } = useContext(MenuContext);
+  const { currentTeacher, chatHistory, addMessageToHistory } = useContext(ChatContext);
   const { user } = useClerk();
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      type: 'received',
-      content: 'Oh?',
-      timestamp: new Date(Date.now() - 300000)
-    },
-    {
-      id: 2,
-      type: 'received',
-      content: 'Cool',
-      timestamp: new Date(Date.now() - 300000)
-    },
-    {
-      id: 3,
-      type: 'received',
-      content: 'How does it work?',
-      timestamp: new Date(Date.now() - 300000)
-    },
-    {
-      id: 4,
-      type: 'sent',
-      content: 'this is how you can communicate with the Ai Teacher',
-      timestamp: new Date(Date.now() - 240000)
-    },
-    {
-      id: 5,
-      type: 'received',
-      content: 'You just text any question or comment relating to the course and the AI will look through the uploaded Documents/ Resources and answer your question.',
-      timestamp: new Date(Date.now() - 180000)
-    },
-    {
-      id: 6,
-      type: 'sent',
-      content: 'Boom!',
-      timestamp: new Date(Date.now() - 120000)
-    },
-    {
-      id: 7,
-      type: 'received',
-      content: 'Hmmm',
-      timestamp: new Date(Date.now() - 60000)
-    },
-    {
-      id: 8,
-      type: 'received',
-      content: 'I think I get it',
-      timestamp: new Date(Date.now() - 60000)
-    },
-    {
-      id: 9,
-      type: 'received',
-      content: 'I can see here that I can also upload more documents or a picture if that would help me better.',
-      timestamp: new Date(Date.now() - 60000)
-    },
-    {
-      id: 10,
-      type: 'received',
-      content: 'thats pretty cool yay',
-      timestamp: new Date(Date.now() - 60000)
-    }
-  ]);
+  
+  // Get the current chat key (teacher ID or 'general')
+  const currentChatKey = currentTeacher?.id || 'general';
+  const currentChatHistory = chatHistory[currentChatKey] || [];
+  
+  const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Update messages when chat history changes
+  useEffect(() => {
+    setMessages(currentChatHistory);
+  }, [currentChatKey]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -113,16 +63,11 @@ const Chatbox = () => {
     let response = '';
     const lowerMessage = userMessage.toLowerCase();
     
+    // Generic responses for all teachers
     if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-      response = 'Hello! How can I help you with your physics studies today?';
-    } else if (lowerMessage.includes('force') || lowerMessage.includes('newton')) {
-      response = 'Great question about forces! Newton\'s laws are fundamental to understanding motion. Would you like me to explain a specific concept or help you with a problem?';
-    } else if (lowerMessage.includes('energy') || lowerMessage.includes('kinetic') || lowerMessage.includes('potential')) {
-      response = 'Energy is a fascinating topic! We have kinetic energy (energy of motion) and potential energy (stored energy). What specific aspect would you like to explore?';
-    } else if (lowerMessage.includes('help') || lowerMessage.includes('confused')) {
-      response = 'I\'m here to help! Could you tell me what specific topic or problem you\'re struggling with? I can explain concepts, work through problems, or provide examples.';
-    } else if (lowerMessage.includes('thank')) {
-      response = 'You\'re welcome! Feel free to ask more questions anytime. Learning physics is a journey, and I\'m here to support you every step of the way.';
+      response = currentTeacher 
+        ? `Hello! I'm ${currentTeacher.name}, your ${currentTeacher.subject} teacher. How can I help you today?`
+        : 'Hello! I\'m your AI learning assistant. How can I help you with your studies today?';
     } else {
       response = 'That\'s an interesting question! I\'d be happy to help you understand this concept better. Could you provide more details or let me know if you\'re working on a specific problem?';
     }
@@ -141,7 +86,9 @@ const Chatbox = () => {
       timestamp: new Date()
     };
 
+    // Add to local state and global chat history
     setMessages(prev => [...prev, userMessage]);
+    addMessageToHistory(currentTeacher?.id, userMessage);
     setInputMessage('');
 
     // Get AI response
@@ -154,7 +101,9 @@ const Chatbox = () => {
       timestamp: new Date()
     };
 
+    // Add to local state and global chat history
     setMessages(prev => [...prev, aiMessage]);
+    addMessageToHistory(currentTeacher?.id, aiMessage);
   };
 
   const handleKeyPress = (e) => {
@@ -174,13 +123,30 @@ const Chatbox = () => {
     alert('Image upload functionality coming soon!');
   };
 
+  // Get header info based on current teacher
+  const getHeaderInfo = () => {
+    if (currentTeacher) {
+      return {
+        name: currentTeacher.name,
+        course: currentTeacher.subject
+      };
+    } else {
+      return {
+        name: "The AI Learning Assistant",
+        course: "General Help"
+      };
+    }
+  };
+
+  const headerInfo = getHeaderInfo();
+
   return (
     <div className="app">
       <div className="chatbox-header">
-        <button className="back-button" onClick={toggleMenu}>☰</button>
+        <button className="back-button" onClick={() => navigate('/home')}>‹</button>
         <div className="header-info">
-          <p className="header-name">Helena Hills</p>
-          <p className="header-course">AP Physics 1: Mechanics</p>
+          <p className="header-name">{headerInfo.name}</p>
+          <p className="header-course">{headerInfo.course}</p>
         </div>
         <img 
             src={user?.imageUrl || "/assets/profile.png"} 
@@ -192,6 +158,13 @@ const Chatbox = () => {
       </div>
       
       <div className="messages">
+        {messages.length === 0 && (
+          <div className="welcome-message">
+            <p>Hello! I am {headerInfo.name}.</p>
+            <p>Ask me anything about {headerInfo.course.toLowerCase()} or any other subject you need help with.</p>
+          </div>
+        )}
+        
         {messages.map((message, index) => {
           const showTimestamp = shouldShowTimestamp(message, messages[index - 1]);
           
@@ -268,4 +241,4 @@ const Chatbox = () => {
   );
 };
 
-export default Chatbox; 
+export default Chatbox;
