@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MenuContext } from '../App';
-import lightbulbIcon from '../assets/light bulb.svg';
+import { MenuContext } from '../../App';
+import lightbulbIcon from '../../assets/light bulb.svg';
 import { useClerk } from '@clerk/clerk-react';
+import '../../styles/shared.css';
 import './Resources.css';
 
 const Resources = () => {
@@ -91,10 +92,10 @@ const Resources = () => {
     const allResources = generatedResources.length > 0 ? generatedResources : filteredResources;
 
     return (
-        <div className="resources-page">
-            <header className="resources-header">
+        <div className="page-container resources-page">
+            <header className="page-header resources-header">
                 <button onClick={toggleMenu} className="menu-button">☰</button>
-                <h1 className="resources-title">Recommended Resources</h1>
+                <h1 className="page-title resources-title">Recommended Resources</h1>
                 <img 
                     src={user?.imageUrl || "/assets/profile.png"} 
                     alt="Profile" 
@@ -117,7 +118,7 @@ const Resources = () => {
                 />
             </div>
 
-            <div className="resources-content">
+            <div className="page-content resources-content">
                 <p className="resources-intro">
                     {searchQuery ? `Search results for "${searchQuery}":` : 'Here are some recommended resources based on your interests and areas you lack in:'}
                 </p>

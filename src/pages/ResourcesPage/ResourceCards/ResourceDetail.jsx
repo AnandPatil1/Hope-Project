@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MenuContext } from '../App';
+import { MenuContext } from '../../../App';
 import { useClerk } from '@clerk/clerk-react';
+import '../../../styles/shared.css';
 import './ResourceDetail.css';
 
 const ResourceDetail = () => {
@@ -9,10 +10,6 @@ const ResourceDetail = () => {
     const { user } = useClerk();
     const { resourceId } = useParams();
     const navigate = useNavigate();
-
-    const handleBackClick = () => {
-        navigate('/resources');
-    };
 
     const getResourceContent = (id) => {
         switch (id) {
@@ -72,7 +69,7 @@ const ResourceDetail = () => {
     return (
         <div className="resource-detail-page">
             <header className="resource-detail-header">
-                <button onClick={handleBackClick} className="back-button">←</button>
+                <button onClick={() => navigate('/resources')} className="back-button">‹</button>
                 <h1 className="resource-detail-title">{content.title}</h1>
                 <img 
                     src={user?.imageUrl || "/assets/profile.png"} 

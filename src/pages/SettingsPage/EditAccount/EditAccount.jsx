@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { UserProfile } from '@clerk/clerk-react';
-import { Link } from 'react-router-dom';
+import { MenuContext } from '../../../App';
+import '../../../styles/shared.css';
 import './EditAccount.css';
 
 const EditAccount = () => {
+    const { toggleMenu } = useContext(MenuContext);
+
     return (
         <div className="account-page-container">
             <header className="account-page-header">
-                <Link to="/settings" className="back-button">←</Link>
+                <button onClick={toggleMenu} className="menu-button">☰</button>
                 <h1 className="account-page-title">Manage Account</h1>
             </header>
             <main className="account-page-content">

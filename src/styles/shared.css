@@ -1,0 +1,149 @@
+/* Shared styles for consistent UI across all pages */
+
+/* Common page container */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  color: var(--color-text);
+  overflow: hidden;
+}
+
+/* Common header styles */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: var(--color-bg-alt);
+  flex-shrink: 0;
+  min-height: 60px;
+}
+
+/* Menu button */
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.menu-button:hover {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.menu-button:active {
+  transform: scale(0.95);
+}
+
+.menu-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* Back button styles */
+.back-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.back-button:active {
+  transform: scale(0.95);
+}
+
+.back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* Profile picture styles */
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+/* Common content area */
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 80px; /* Space for bottom nav */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* Custom scrollbar */
+.page-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.page-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.page-content::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.page-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Header info styles */
+.header-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 12px;
+  align-items: center;
+  text-align: center;
+}
+
+.header-name {
+  font-weight: bold;
+  margin: 0;
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+.header-description {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Page title styles */
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text);
+  flex: 1;
+  text-align: center;
+} 

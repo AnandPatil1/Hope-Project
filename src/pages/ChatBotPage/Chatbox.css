@@ -42,8 +42,9 @@ body, html, #root {
   transition: background-color 0.2s ease;
 }
 
-.back-button:hover {
-  background-color: var(--color-bg);
+.chatbox-header .back-button:hover {
+  color: var(--color-primary);
+  background-color: transparent !important;
 }
 
 .avatar {
@@ -89,6 +90,28 @@ body, html, #root {
   flex-direction: column;
   min-height: 0;
   background-color: var(--color-bg);
+}
+
+/* Welcome message */
+.welcome-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-alt);
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.welcome-message p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.welcome-message p:first-child {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 /* Centered timestamp divider */
