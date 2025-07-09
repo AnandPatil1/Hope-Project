@@ -53,25 +53,48 @@ const Chatbox = () => {
     return timeDiff > fiveMinutes;
   };
 
+  // Gemini API integration (for prototyping only; do NOT expose your API key in production!)
+  // The API key is now loaded from .env.local using Vite's environment variable system
+  const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+  const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+
+  async function fetchGeminiResponse(userMessage) {
+    try {
+      console.log('Calling Gemini API with message:', userMessage);
+      console.log('API URL:', GEMINI_API_URL);
+      
+      const response = await fetch(GEMINI_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: userMessage }] }]
+        })
+      });
+      
+      console.log('Response status:', response.status);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API Error:', errorText);
+        return `API Error: ${response.status} - ${errorText}`;
+      }
+      
+      const data = await response.json();
+      console.log('API Response data:', data);
+      
+      const aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      console.log('Extracted AI response:', aiResponse);
+      
+      return aiResponse || "Sorry, I couldn't understand that.";
+    } catch (error) {
+      console.error('Fetch error:', error);
+      return `Error: ${error.message}`;
+    }
+  }
+
   const simulateAIResponse = async (userMessage) => {
     setIsTyping(true);
-    
-    // Simulate AI processing time
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
-    
-    // Simple response logic - you can replace this with actual AI integration
-    let response = '';
-    const lowerMessage = userMessage.toLowerCase();
-    
-    // Generic responses for all teachers
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-      response = currentTeacher 
-        ? `Hello! I'm ${currentTeacher.name}, your ${currentTeacher.subject} teacher. How can I help you today?`
-        : 'Hello! I\'m your AI learning assistant. How can I help you with your studies today?';
-    } else {
-      response = 'That\'s an interesting question! I\'d be happy to help you understand this concept better. Could you provide more details or let me know if you\'re working on a specific problem?';
-    }
-    
+    const response = await fetchGeminiResponse(userMessage);
     setIsTyping(false);
     return response;
   };
