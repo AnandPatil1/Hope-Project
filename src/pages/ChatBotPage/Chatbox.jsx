@@ -53,6 +53,50 @@ const Chatbox = () => {
     return timeDiff > fiveMinutes;
   };
 
+  // Function to format text with asterisk markdown (*, **, ***)
+  const formatMessageContent = (content) => {
+    if (!content) return content;
+    
+    // Split the content by asterisk patterns and format accordingly
+    const parts = [];
+    let lastIndex = 0;
+    
+    // Regex to match asterisk patterns: ***text***, **text**, *text*
+    const asteriskRegex = /(\*{1,3})(.*?)\1/g;
+    let match;
+    
+    while ((match = asteriskRegex.exec(content)) !== null) {
+      // Add any text before the match
+      if (match.index > lastIndex) {
+        parts.push(content.slice(lastIndex, match.index));
+      }
+      
+      const asteriskCount = match[1].length;
+      const text = match[2];
+      
+      // Format based on number of asterisks
+      if (asteriskCount === 1) {
+        // *text* -> italic
+        parts.push(<em key={match.index}>{text}</em>);
+      } else if (asteriskCount === 2) {
+        // **text** -> bold
+        parts.push(<strong key={match.index}>{text}</strong>);
+      } else if (asteriskCount === 3) {
+        // ***text*** -> bold italic
+        parts.push(<strong key={match.index}><em>{text}</em></strong>);
+      }
+      
+      lastIndex = match.index + match[0].length;
+    }
+    
+    // Add any remaining text after the last match
+    if (lastIndex < content.length) {
+      parts.push(content.slice(lastIndex));
+    }
+    
+    return parts.length > 0 ? parts : content;
+  };
+
   // Gemini API integration (for prototyping only; do NOT expose your API key in production!)
   // The API key is now loaded from .env.local using Vite's environment variable system
   const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
@@ -200,7 +244,7 @@ const Chatbox = () => {
               )}
               <div className={`message-container ${message.type}`}>
                 <div className={`message ${message.type}`}>
-                  {message.content}
+                  {formatMessageContent(message.content)}
                 </div>
               </div>
             </React.Fragment>
